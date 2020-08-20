@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Engineer Ticket Data</title>
+    {% load static %}
+    <script src="{% static "tickets/js/jquery.js" %}"></script>
+    <script src="{% static "tickets/js/sample.js" %}"></script>
+    <link rel="stylesheet" href="{% static  "tickets/css/styleseng.css"%}">
+</head>
+
+<body>
+<P>You are logged in as {{username}} {{ sconfirm }}</P>
+
+
+
+
+<div class="dashdiv" id="headdiv">
+    <div class="innerbox" id="box1"></div>
+    <div class="innerbox" id="box2"></div>
+    <div class="innerbox" id="box3"></div>
+    <div class="innerbox" id="box4"></div>
+</div>
+
+
+<form name='tktcreate' action='/addentry/' id="ticketform" method="post" onsubmit="return validateForm()" > {% csrf_token %}
+
+<div class="superbox" id="superbox">
+    <div class="tktone" id="tktone">
+        <p>
+        <label for="ticketno">Inc No:</label>
+        <input type="text" id="ticketno" name="ticketno" />
+    </p>
+    <p>
+       <label for="priority" >Priority:</label>
+            <select style="height: 20px" id="priority" name="priority">
+                <option value="none" selected disabled hidden>
+                    Select an Option
+                <option value="P1">P1</option>
+                <option value="P2">P2</option>
+                <option value="P3">P3</option>
+                <option value="P4">P4</option>
+            </select>
+    </p>
+        <p>
+            Ticket Status
+        </p>
+        <p>
+        <input type="radio" id="resol" name="status" value="Resolved">
+        <label for="resol">Resolved</label><br>
+
+        <input type="radio" id="trans" name="status" value="Transferred">
+        <label for="trans">Transferred</label><br>
+        </p>
+
+
+    </div>
+     <div class="remarks" id="remakrs">
+        <div class="remone" id="remone"></div>
+         <div class="remone" id="remtwo"></div>
+         <div class="remone" id="remthree"></div>
+         <div class="remone" id="remfour"></div>
+    </div>
+
+
+</div>
+
+<div class="textarea" id="text">
+    <label for="tktdes">Ticket Description </label><br>
+    <textarea name="tktdes" id="tktdes" cols="30" rows="10"></textarea>
+</div>
+<div class="tktdates" id="tktdates">
+    <div id="inc1">
+        <label for="incstarttime">Incident Created Date:</label>
+    <input type="datetime-local" id="incstarttime" name="incstarttime"><br>
+    <label for="incresinq">Incident Received Date:</label>
+    <input type="datetime-local" id="incresinq" name="incresinq"><br>
+    </div>
+    <div class="inc2" id="inc2">
+        <label for="increstime">Incident Resolved / Transferred Date:</label>
+    <input type="datetime-local" id="increstime" name="increstime">
+    </div>
+
+
+</div>
+
+<div class='slahidden' id="slachck">
+    <p>SLA Missed as per ServiceNOW ?:</p>
+    <input type="radio" id="slamet" name="sla" value="Met">
+    <label for="slamet">SLA Met</label><br>
+    <input type="radio" id="slamiss" name="sla" value="Missed">
+    <label for="slamiss">SLA Missed</label>
+</div>
+<div class='slateam' id="slateam">
+    <p>Did SLA Missed with in your team?:</p>
+    <input type="radio" id="slamytem" name="slateam" value="WithinTeam">
+    <label for="slamytem">With in Team </label><br>
+    <input type="radio" id="slaother" name="slateam" value="OutSideTeam" onclick="showteam()">
+    <label for="slaother">OutSide </label><br>
+    <div class='dcoteam' id="dcoteam">
+    <label for="teamname">Team Name </label>
+    <select name="teamname" id="teamname" class="form-control">
+            <option value="">---select team---</option>
+            {% for i in name %}
+            <option value="{{i.name}}">{{i.name}}</option>
+            {% endfor %}
+        </select>
+
+</div>
+
+</div>
+
+<div class="submit">
+    <input type="submit" value="Save"/>
+</div>
+
+</form>
+
+<form action='/logout' method='GET'>
+<button type='submit'>Logout</button>
+</form>
+
+</body>
+</html>

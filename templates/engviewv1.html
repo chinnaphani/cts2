@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Engineer Ticket Data</title>
+    {% load static %}
+    <script src="{% static "tickets/js/jquery.js" %}"></script>
+    <script src="{% static "tickets/js/samplev1.js" %}"></script>
+    <link rel="stylesheet" href="{% static  "tickets/css/styles.css"%}">
+
+</head>
+<body>
+<h2 class="text-center">Team Incident Record</h2>
+    <br>
+<div class="div1" >
+    <p>
+        <label for="ticketno">Ticket Number:</label>
+        <input style="width: 10% " type="text" id="ticketno" name="ticketno" /><br>
+    </p>
+
+
+    <label for="priority" >Priority:</label>
+            <select style="width: fit-content" id="priority" name="priority">
+                <option value="none" selected disabled hidden>
+                    Select an Option
+                <option value="P1">P1</option>
+                <option value="P2">P2</option>
+                <option value="P3">P3</option>
+                <option value="P4">P4</option>
+            </select><br>
+
+<label for="tktdes">Ticket Description </label><br>
+<textarea id="tktdes" cols="30" rows="10"></textarea>
+</div>
+
+<div class="tktdates" id="tktdates">
+
+
+<label for="incstarttime">Incident Created Date:</label>
+<input type="datetime-local" id="incstarttime" name="incstarttime"><br>
+<label for="incresinq">Incident Received Date:</label>
+<input type="datetime-local" id="incresinq" name="incresinq"><br>
+
+    <div class="boxcomts" id="boxres">
+
+    </div>
+    <br>
+    <p>Ticket Status</p>
+    <input type="radio" id="resol" name="status" value="Resolved">
+    <label for="resol">Resolved</label><br>
+
+    <input type="radio" id="trans" name="status" value="Transferred">
+    <label for="trans">Transferred</label><br>
+
+<label for="increstime">Incident Resolved / Transferred Date:</label>
+<input type="datetime-local" id="increstime" name="increstime">
+    <div class="boxcomts" id="boxsol">
+
+    </div>
+<div class='slahidden' id="slachck">
+    <p>SLA Missed as per ServiceNOW ?:</p>
+
+    <input type="radio" id="slamet" name="sla" value="Met">
+    <label for="slamet">SLA Met</label><br>
+    <input type="radio" id="slamiss" name="sla" value="Missed">
+    <label for="slamiss">SLA Missed</label><br>
+</div>
+
+<div class='slateam' id="slateam">
+    <p>Did SLA Missed with in your team?:</p>
+    <input type="radio" id="slamytem" name="slateam" value="WithinTeam">
+    <label for="slamytem">With in Team </label><br>
+    <input type="radio" id="slaother" name="slateam" value="OutSideTeam">
+    <label for="slaother">OutSide </label><br>
+</div>
+
+<div class='dcoteam' id="dcoteam">
+    <label for="teamname">Team Name </label>
+    <select name="teamname" id="teamname" class="form-control">
+            <option value="">---select team---</option>
+            {% for i in name %}
+            <option value="{{i.id}}">{{i.name}}</option>
+            {% endfor %}
+        </select>
+
+</div>
+</div>

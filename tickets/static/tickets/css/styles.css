@@ -1,0 +1,53 @@
+input[type=text], select, textarea {
+  width: 50%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  text-align: left;
+}
+
+textarea {
+  resize: none;
+  height: 70px;
+}
+
+input[type=datetime-local] {
+  width: fit-content;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  text-align: left;
+
+}
+
+.tktdates{
+  background: #fffbee;
+  width: 50%;
+}
+
+.boxcomts{
+  width: fit-content;
+  height: 40px;
+  display: none;
+  background: #24d8de;
+
+}
+
+#slachck{
+  display: none;
+}
+
+.slateam{
+  display: none;
+}
+
+.dcoteam{
+  display: none;
+}
